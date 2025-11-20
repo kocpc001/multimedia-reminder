@@ -27,6 +27,8 @@ body {
     background-color: var(--bg);
     color: var(--text);
     height: 100vh;
+    height: 100dvh;
+    /* Dynamic Viewport Height for mobile */
     overflow: hidden;
 }
 
@@ -175,10 +177,12 @@ body {
     margin-top: 2px;
 }
 
-/* FAB */
+/* FAB - Fixed Position for better mobile support */
 .fab {
-    position: absolute;
-    bottom: 30px;
+    position: fixed;
+    /* Changed from absolute to fixed */
+    bottom: calc(40px + env(safe-area-inset-bottom));
+    /* Increased bottom margin + safe area */
     right: 30px;
     width: 60px;
     height: 60px;
@@ -189,7 +193,8 @@ body {
     font-size: 1.5rem;
     box-shadow: var(--shadow);
     cursor: pointer;
-    z-index: 50;
+    z-index: 999;
+    /* Increased z-index */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -574,5 +579,5 @@ input:checked+.slider:before {
 
 .selection-mode .fab#delete-selected-btn {
     display: flex;
-    bottom: 30px;
+    bottom: calc(40px + env(safe-area-inset-bottom));
 }
